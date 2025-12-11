@@ -55,22 +55,26 @@ export default function Home() {
       {/* Gráficos */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
         
-        {/* Gráfico de Barras */}
-        <div className="bg-white p-4 rounded shadow h-72">
+        {/* Gráfico de Barras - CORREGIDO */}
+        <div className="bg-white p-4 rounded shadow h-80 flex flex-col">
           <h3 className="font-bold mb-4">Ventas por Producto</h3>
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={datosFiltrados}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="producto" tick={{fontSize: 10}} interval={0} />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="monto" fill="#4f46e5" />
-            </BarChart>
-          </ResponsiveContainer>
+          
+          {/* Contenedor flexible que asegura dimensiones válidas para el gráfico */}
+          <div className="w-full flex-1 min-h-0">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={datosFiltrados}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="producto" tick={{fontSize: 10}} interval={0} />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="monto" fill="#4f46e5" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
         {/* Tabla Detallada */}
-        <div className="bg-white p-4 rounded shadow h-72 overflow-auto">
+        <div className="bg-white p-4 rounded shadow h-80 overflow-auto">
           <h3 className="font-bold mb-4">Detalle de Registros</h3>
           <table className="w-full text-left text-sm">
             <thead>
