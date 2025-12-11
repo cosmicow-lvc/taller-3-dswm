@@ -1,0 +1,16 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Venta {
+  id        Int      @id @default(autoincrement())
+  producto  String
+  region    String
+  monto     Int
+  fecha     DateTime @default(now())
+}
