@@ -1,3 +1,10 @@
+"use client";
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch } from "@/store/store";
+
+
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import MetricCard from "@/components/ui/metricCard";
 
@@ -8,6 +15,19 @@ import AreaChartCard from "@/components/charts/areaChartCard";
 import RadarChartCard from "@/components/charts/radarChartCard";
 
 export default function DashboardPage() {
+  const dispatch = useDispatch<AppDispatch>();
+  const ventas = useSelector((state: RootState) => state.data.items);
+
+  useEffect(() => {
+    async function load() {
+      const res = await fetch("/api/ventas");
+      const data = await res.json();
+      console.log("Ventas cargadas:", data);
+    }
+
+    load();
+  }, [dispatch]);
+
   return (
     <DashboardLayout>
       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
