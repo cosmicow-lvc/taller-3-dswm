@@ -1,7 +1,8 @@
 // prisma/schema.prisma
+
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -9,9 +10,9 @@ datasource db {
 }
 
 model Venta {
-  id        Int      @id @default(autoincrement())
-  producto  String
-  region    String
-  monto     Int
-  fecha     DateTime @default(now())
+  id       Int      @id @default(autoincrement())
+  producto String
+  region   String
+  monto    Int
+  fecha    DateTime @default(now())
 }
