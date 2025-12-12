@@ -23,11 +23,11 @@ Crear un archivo .env en el directorio /datamobile con el siguiente contenido, r
 ```
 DATABASE_URL = "postgresql://<USUARIO>:<CONTRASEÑA>@<HOST>:<PUERTO>/<BASE_DE_DATOS>?schema=public"
 ```
-Creamos el cliente de prisma
+Crear el cliente de prisma
 ```
 npx prisma generate
 ```
-Iniciamos la aplicacion
+Iniciar la aplicacion
 ```
 npm run dev
 ```
