@@ -1,22 +1,46 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface FilterState {
+  search: string;
   region: string;
+  startDate: string; 
+  endDate: string;
+  minAmount: string; 
+  maxAmount: string;
 }
 
 const initialState: FilterState = {
+  search: '',
   region: 'Todas',
+  startDate: '',
+  endDate: '',
+  minAmount: '',
+  maxAmount: '',
 };
 
-export const filterSlice = createSlice({
+const filterSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    setRegion: (state, action: PayloadAction<string>) => {
-      state.region = action.payload;
-    },
+    setSearch: (state, action: PayloadAction<string>) => { state.search = action.payload; },
+    setRegion: (state, action: PayloadAction<string>) => { state.region = action.payload; },
+    
+    setStartDate: (state, action: PayloadAction<string>) => { state.startDate = action.payload; },
+    setEndDate: (state, action: PayloadAction<string>) => { state.endDate = action.payload; },
+    setMinAmount: (state, action: PayloadAction<string>) => { state.minAmount = action.payload; },
+    setMaxAmount: (state, action: PayloadAction<string>) => { state.maxAmount = action.payload; },
+    
+    resetFilters: (state) => {
+        return initialState;
+    }
   },
 });
 
-export const { setRegion } = filterSlice.actions;
+export const { 
+  setSearch, setRegion, 
+  setStartDate, setEndDate, 
+  setMinAmount, setMaxAmount,
+  resetFilters 
+} = filterSlice.actions;
+
 export default filterSlice.reducer;
