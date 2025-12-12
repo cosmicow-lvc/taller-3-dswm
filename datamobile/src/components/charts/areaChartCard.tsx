@@ -15,9 +15,9 @@ export default function AreaChartCard() {
   useEffect(() => {
     async function fetchTrimestres() {
       try {
-        const res = await fetch("/api/ventas/trimestres"); // <-- tu ruta API
+        const res = await fetch("/api/ventas/trimestres");
         const json = await res.json();
-        setData(json); // Debe venir como [{name:"Q1", value:...}]
+        setData(json);
       } catch (e) {
         console.error("Error al cargar trimestres:", e);
       }
@@ -34,9 +34,19 @@ export default function AreaChartCard() {
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data}>
             <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Area type="monotone" dataKey="value" fill="#3B82F6" stroke="#2563EB" />
+
+
+            <YAxis tickFormatter={(v) => `$${v.toLocaleString("es-CL")}`} />
+
+       
+            <Tooltip formatter={(v) => `$${v.toLocaleString("es-CL")}`} />
+
+            <Area
+              type="monotone"
+              dataKey="value"
+              fill="#3B82F6"
+              stroke="#2563EB"
+            />
           </AreaChart>
         </ResponsiveContainer>
       </div>

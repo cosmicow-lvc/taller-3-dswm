@@ -24,8 +24,13 @@ export default function BarChartCard() {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
             <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
+
+            {/* EJE Y formateado como dinero */}
+            <YAxis tickFormatter={(v) => `$${v.toLocaleString("es-CL")}`} />
+
+            {/* Tooltip formateado como dinero */}
+            <Tooltip formatter={(v) => `$${v.toLocaleString("es-CL")}`} />
+
             <Bar dataKey="value" fill="#4F46E5" />
           </BarChart>
         </ResponsiveContainer>

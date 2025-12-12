@@ -25,9 +25,19 @@ export default function LineChartCard() {
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
             <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey="value" stroke="#10B981" strokeWidth={3} />
+            
+            {/* EJE Y con formato de dinero 👇 */}
+            <YAxis tickFormatter={(v) => `$${v.toLocaleString("es-CL")}`} />
+
+            {/* Tooltip también con formato 👇 */}
+            <Tooltip formatter={(v) => `$${v.toLocaleString("es-CL")}`} />
+
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke="#10B981"
+              strokeWidth={3}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>
