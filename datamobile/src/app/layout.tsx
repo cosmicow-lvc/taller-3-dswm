@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </aside>
             <main className="flex-1 h-full overflow-y-auto w-full">
                 <nav className="md:hidden bg-gray-800 p-4 flex justify-around border-b border-gray-700 mb-4 sticky top-0 z-10">
-                    <a href="/dashboard" className="text-sm font-bold text-white">Dashboard</a>
+                    <a href="" className="text-sm font-bold text-white">Dashboard</a>
                     <a href="/registros" className="text-sm font-bold text-blue-400">Registros</a>
                 </nav>
               {children}
