@@ -1,20 +1,25 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import Card from "@/components/ui/card";
 
-const data = [
-  { name: "Lun", value: 20 },
-  { name: "Mar", value: 35 },
-  { name: "Mié", value: 25 },
-  { name: "Jue", value: 45 },
-  { name: "Vie", value: 50 },
-];
-
 export default function LineChartCard() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function load() {
+      const res = await fetch("/api/ventas/semanales");
+      const json = await res.json();
+      setData(json);
+    }
+
+    load();
+  }, []);
+
   return (
     <Card>
-      <h3 className="text-lg font-semibold mb-3">Actividad Semanal</h3>
+      <h3 className="text-lg font-semibold mb-3 text-black">Actividad Semanal</h3>
 
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">

@@ -10,3 +10,4 @@ export async function GET() {
     return NextResponse.json({ error: "Error obteniendo ventas" }, { status: 500 });
   }
 }
+

@@ -10,6 +10,7 @@ const initialState: DataState = {
   loading: false,
 };
 
+
 const dataSlice = createSlice({
   name: "data",
   initialState,

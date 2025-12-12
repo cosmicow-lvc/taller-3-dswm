@@ -1,19 +1,24 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import Card from "@/components/ui/card";
 
-const data = [
-  { name: "Ene", value: 120 },
-  { name: "Feb", value: 80 },
-  { name: "Mar", value: 140 },
-  { name: "Abr", value: 100 },
-];
-
 export default function BarChartCard() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function load() {
+      const res = await fetch("/api/ventas/mensuales");
+      const json = await res.json();
+      setData(json);
+    }
+    load();
+  }, []);
+
   return (
     <Card>
-      <h3 className="text-lg font-semibold mb-3">Ventas Mensuales</h3>
+      <h3 className="text-lg font-semibold mb-3 text-black">Ventas Mensuales</h3>
 
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
