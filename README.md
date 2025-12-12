@@ -32,3 +32,8 @@ Iniciar la aplicacion
 npm run dev
 ```
 
+## Para generar datos de prueba
+Ejecutar el siguente comando luego de haber generado el cliente de prisma
+```
+npm run seed
+```
